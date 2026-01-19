@@ -1,17 +1,26 @@
 const albumes = {
-    'fotos': ['nosotros1.jpg', 'nosotros2.jpg', 'nosotros3.jpg', 'nosotros4.jpg','nosotros5.jpg']
+    'fotos': ['nosotros1.jpg', 'nosotros2.jpg', 'nosotros3.jpg', 'nosotros4.jpg', 'nosotros5.jpg']
 };
+
+// 1. AGREGA TUS VIDEOS AQUÍ
+const listaDeVideos = [
+    'video1.mp4', 
+    'video2.mp4',
+    'video3.mp4'
+];
 
 let fotosActuales = [];
 let indiceActual = 0;
 
 // FUNCIONES FOTOS
 function abrirAlbum(id) {
-    fotosActuales = albumes[id];
-    indiceActual = 0;
-    actualizarVista();
-    document.getElementById('visor').style.display = "flex";
-    document.body.style.overflow = "hidden";
+    if (albumes[id]) {
+        fotosActuales = albumes[id];
+        indiceActual = 0;
+        actualizarVista();
+        document.getElementById('visor').style.display = "flex";
+        document.body.style.overflow = "hidden";
+    }
 }
 
 function actualizarVista() {
@@ -32,13 +41,35 @@ function cerrarVisor() {
     document.body.style.overflow = "auto";
 }
 
-// FUNCIONES VIDEOS
+// --- FUNCIONES VIDEOS ACTUALIZADAS ---
 function mostrarVideos() {
+    const gridVideos = document.querySelector('.grid-videos');
+    
+    // Solo cargamos los videos si el contenedor está vacío
+    if (gridVideos.innerHTML.trim() === "") {
+        listaDeVideos.forEach(video => {
+            gridVideos.innerHTML += `
+                <video controls playsinline>
+                    <source src="${video}" type="video/mp4">
+                    Tu navegador no soporta video.
+                </video>
+            `;
+        });
+    }
+
     document.getElementById('seccion-videos').style.display = "flex";
+    document.body.style.overflow = "hidden";
 }
 
 function cerrarVideos() {
-    document.getElementById('seccion-videos').style.display = "none";
+    const modalVideos = document.getElementById('seccion-videos');
+    
+    // Pausar todos los videos para que no siga sonando el audio
+    const vids = modalVideos.querySelectorAll('video');
+    vids.forEach(v => v.pause());
+
+    modalVideos.style.display = "none";
+    document.body.style.overflow = "auto";
 }
 
 // SWIPE CELULAR
