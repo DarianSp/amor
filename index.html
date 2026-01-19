@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestro Álbum | Nosotros</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <title>Nosotros ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header class="hero">
-        <div class="corazon-icono">❤️</div>
-        <h1>Ivania & Darian</h1>
-        <p class="subtitulo">Nuestra historia de amor</p>
-        <div class="contador-amor">
-            <span id="tiempo-juntos">Juntos desde siempre</span>
-        </div>
+        <div class="love-icon">❤️</div>
+        <h1>Nombre & Nombre</h1>
+        <p class="tagline">Coleccionando momentos juntos</p>
     </header>
 
-    <section class="galeria-seccion">
-        <h2 class="titulo-seccion">Nuestros Capítulos</h2>
-        <div class="grid-momentos">
-            <div class="momento-card" onclick="abrirAlbum('Fotos')">
-                <img src="portada-videos.jpg" alt="Videos">
-                <div class="overlay"><span>Nuestros Viajes ✈️</span></div>
+    <main class="contenedor-principal">
+        
+        <div class="seccion-card" onclick="abrirAlbum('fotos')">
+            <div class="imagen-preview">
+                <img src="portada-fotos.jpg" alt="Nuestras Fotos">
             </div>
-            <div class="momento-card" onclick="abrirAlbum('citas')">
-                <img src="portada-citas.jpg" alt="Citas">
-                <div class="overlay"><span>Citas Especiales 🌹</span></div>
+            <div class="texto-card">
+                <h2>Nuestras Fotos</h2>
+                <p>Nuestros mejores recuerdos en imágenes</p>
             </div>
         </div>
-    </section>
+
+        <div class="seccion-card" onclick="mostrarVideos()">
+            <div class="imagen-preview">
+                <img src="portada-videos.jpg" alt="Nuestros Videos">
+            </div>
+            <div class="texto-card">
+                <h2>Nuestros Videos</h2>
+                <p>Momentos que cobran vida</p>
+            </div>
+        </div>
+
+    </main>
+
+    <div id="seccion-videos" class="modal-videos">
+        <span class="cerrar" onclick="cerrarVideos()">&times;</span>
+        <h2 class="titulo-modal">Nuestros Momentos</h2>
+        <div class="grid-videos">
+            <video controls playsinline src="video1.mp4"></video>
+            <video controls playsinline src="video2.mp4"></video>
+        </div>
+    </div>
 
     <div id="visor" class="visor-negro">
         <span class="cerrar" onclick="cerrarVisor()">&times;</span>
