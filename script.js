@@ -1,5 +1,5 @@
 const albumes = {
-    'fotos': ['nosotros1.jpg', 'nosotros2.jpg', 'nosotros3.jpg', 'nosotros4.jpg']
+    'fotos': ['nosotros1.jpg', 'nosotros2.jpg', 'nosotros3.jpg', 'nosotros4.jpg','nosotros5.jpg']
 };
 
 let fotosActuales = [];
