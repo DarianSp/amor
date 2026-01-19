@@ -1,11 +1,11 @@
 const albumes = {
-    'viajes': ['viaje1.jpg', 'viaje2.jpg', 'viaje3.jpg'],
-    'citas': ['cita1.jpg', 'cita2.jpg']
+    'fotos': ['nosotros1.jpg', 'nosotros2.jpg', 'nosotros3.jpg', 'nosotros4.jpg']
 };
 
 let fotosActuales = [];
 let indiceActual = 0;
 
+// FUNCIONES FOTOS
 function abrirAlbum(id) {
     fotosActuales = albumes[id];
     indiceActual = 0;
@@ -16,9 +16,8 @@ function abrirAlbum(id) {
 
 function actualizarVista() {
     const contenedor = document.getElementById('fotos-contenedor');
-    const contador = document.getElementById('contador');
     contenedor.innerHTML = `<img src="${fotosActuales[indiceActual]}" class="fade-in">`;
-    if (contador) contador.innerText = `${indiceActual + 1} / ${fotosActuales.length}`;
+    document.getElementById('contador').innerText = `${indiceActual + 1} / ${fotosActuales.length}`;
 }
 
 function cambiarFoto(dir) {
@@ -33,18 +32,23 @@ function cerrarVisor() {
     document.body.style.overflow = "auto";
 }
 
-// LÓGICA SWIPE PARA CELULAR
+// FUNCIONES VIDEOS
+function mostrarVideos() {
+    document.getElementById('seccion-videos').style.display = "flex";
+}
+
+function cerrarVideos() {
+    document.getElementById('seccion-videos').style.display = "none";
+}
+
+// SWIPE CELULAR
 let xDown = null;
-const visor = document.getElementById('visor');
-
-visor.addEventListener('touchstart', (e) => { xDown = e.touches[0].clientX; });
-visor.addEventListener('touchmove', (e) => {
+document.getElementById('visor').addEventListener('touchstart', (e) => { xDown = e.touches[0].clientX; });
+document.getElementById('visor').addEventListener('touchmove', (e) => {
     if (!xDown) return;
-    let xUp = e.touches[0].clientX;
-    let xDiff = xDown - xUp;
-
-    if (Math.abs(xDiff) > 30) { // Sensibilidad alta
+    let xDiff = xDown - e.touches[0].clientX;
+    if (Math.abs(xDiff) > 40) {
         if (xDiff > 0) cambiarFoto(1); else cambiarFoto(-1);
-        xDown = null; 
+        xDown = null;
     }
 });
