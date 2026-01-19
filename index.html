@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Álbum | Nosotros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="corazon-icono">❤️</div>
+        <h1>Nombre & Nombre</h1>
+        <p class="subtitulo">Nuestra historia de amor</p>
+        <div class="contador-amor">
+            <span id="tiempo-juntos">Juntos desde siempre</span>
+        </div>
+    </header>
+
+    <section class="galeria-seccion">
+        <h2 class="titulo-seccion">Nuestros Capítulos</h2>
+        <div class="grid-momentos">
+            <div class="momento-card" onclick="abrirAlbum('viajes')">
+                <img src="portada-viajes.jpg" alt="Viajes">
+                <div class="overlay"><span>Nuestros Viajes ✈️</span></div>
+            </div>
+            <div class="momento-card" onclick="abrirAlbum('citas')">
+                <img src="portada-citas.jpg" alt="Citas">
+                <div class="overlay"><span>Citas Especiales 🌹</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="visor" class="visor-negro">
+        <span class="cerrar" onclick="cerrarVisor()">&times;</span>
+        <button class="nav-btn prev" onclick="cambiarFoto(-1)">&#10094;</button>
+        <div class="contenido-visor" id="fotos-contenedor"></div>
+        <button class="nav-btn next" onclick="cambiarFoto(1)">&#10095;</button>
+        <div id="contador"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
